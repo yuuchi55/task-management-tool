@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスク管理ツール</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tasks"></i> タスク管理ツール</h1>
+            <p class="header-subtitle">効率的なタスク管理で生産性を向上</p>
+        </header>
+
+        <main>
+            <div class="dashboard-section">
+                <h2><i class="fas fa-chart-line"></i> ダッシュボード</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-list-check stat-icon"></i>
+                        <div class="stat-content">
+                            <h3 id="total-tasks">0</h3>
+                            <p>総タスク数</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-spinner stat-icon in-progress"></i>
+                        <div class="stat-content">
+                            <h3 id="in-progress-tasks">0</h3>
+                            <p>進行中</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle stat-icon completed"></i>
+                        <div class="stat-content">
+                            <h3 id="completed-tasks">0</h3>
+                            <p>完了</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users stat-icon"></i>
+                        <div class="stat-content">
+                            <h3 id="team-members">0</h3>
+                            <p>チームメンバー</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <canvas id="status-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="priority-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="task-input-section">
+                <h2><i class="fas fa-plus-circle"></i> 新しいタスクを追加</h2>
+                <form id="task-form">
+                    <input type="text" id="task-title" placeholder="タスクのタイトル" required>
+                    <textarea id="task-description" placeholder="タスクの詳細（任意）"></textarea>
+                    <div class="form-row">
+                        <select id="task-priority">
+                            <option value="low">低</option>
+                            <option value="medium" selected>中</option>
+                            <option value="high">高</option>
+                        </select>
+                        <input type="date" id="task-due-date">
+                        <select id="task-assignee">
+                            <option value="">担当者を選択</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-plus"></i> タスクを追加</button>
+                </form>
+            </div>
+
+            <div class="filter-section">
+                <h2><i class="fas fa-filter"></i> フィルター</h2>
+                <div class="filter-controls">
+                    <select id="filter-status">
+                        <option value="all">すべて</option>
+                        <option value="pending">未完了</option>
+                        <option value="in-progress">進行中</option>
+                        <option value="completed">完了</option>
+                    </select>
+                    <select id="filter-priority">
+                        <option value="all">すべての優先度</option>
+                        <option value="high">高</option>
+                        <option value="medium">中</option>
+                        <option value="low">低</option>
+                    </select>
+                    <select id="filter-assignee">
+                        <option value="all">すべての担当者</option>
+                    </select>
+                    <input type="text" id="search-task" placeholder="タスクを検索...">
+                </div>
+            </div>
+
+            <div class="task-list-section">
+                <h2><i class="fas fa-list"></i> タスク一覧</h2>
+                <div id="task-list" class="task-list">
+                </div>
+            </div>
+
+            <div class="team-section">
+                <h2><i class="fas fa-users-cog"></i> チームメンバー管理</h2>
+                <div class="team-input">
+                    <input type="text" id="member-name" placeholder="メンバー名">
+                    <button id="add-member" class="btn-secondary"><i class="fas fa-user-plus"></i> メンバーを追加</button>
+                </div>
+                <ul id="member-list" class="member-list"></ul>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

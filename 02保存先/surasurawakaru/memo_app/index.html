@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シンプルメモアプリ</title>
+    <style>
+        /* 簡単な見た目の調整 */
+        body{font-family: sans-serif;}
+        textarea{width: 90%; height: 100px; margin-bottom: 10px;}
+        button{padding: 10px 15px;}
+        #memoList{list-style: none; padding: 0;}
+        #memoList li{border-bottom: 1px solid  #ccc ; padding: 10px 0;}
+    </style>
+</head>
+<body>
+
+    <h1>シンプルメモアプリ</h1>
+
+    <textarea id="memoInput" placeholder="メモを入力してください．．．"></textarea>
+    <br>
+    <button id="saveButton">メモを保存</button>
+
+    <h2>保存したメモ</h2>
+    <ul id="memoList">
+        </ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
